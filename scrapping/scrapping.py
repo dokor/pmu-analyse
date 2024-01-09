@@ -1,35 +1,36 @@
 import requests
-from bs4 import BeautifulSoup
 
-def scrap_pmu_data(date, reunion, course):
-    base_url = "https://www.pmu.fr/turf/{}/{}/{}/"
+def call_api(date, reunion, course):
+    base_url = "https://online.turfinfo.api.pmu.fr/rest/client/61/programme/{}/{}/{}?specialisation=INTERNET"
     url = base_url.format(date, reunion, course)
 
-    # Envoyer une requête GET à l'URL
-    response = requests.get(url)
+    headers = {
+        'accept': 'application/json',
+        'user-agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36'
+        # Ajoutez d'autres en-têtes au besoin
+    }
+
+    # Envoyer une requête GET à l'URL de l'API
+    response = requests.get(url, headers=headers)
 
     if response.status_code == 200:
-        # Analyser le contenu HTML de la page
-        soup = BeautifulSoup(response.text, 'html.parser')
+        # Convertir la réponse JSON en un dictionnaire Python
+        data = response.json()
 
-        # Extraire les informations nécessaires ici
-        # Vous devrez inspecter la structure HTML de la page pour obtenir les balises appropriées.
-
-        # Exemple de récupération du titre de la page
-        title = soup.find('title').text
-        print("Titre de la page:", title)
-
-        # Vous pouvez continuer à extraire d'autres informations en fonction de la structure HTML
-
-        # Appeler la fonction d'analyse de la course (à implémenter)
-        return soup
+        # Appeler la fonction d'analyse de la course avec les données de l'API
+        analyze_race(data)
 
     else:
-        print("Échec de la requête. Code de statut:", response.status_code)
-        return None
+        print("Échec de la requête API. Code de statut:", response.status_code)
 
-def analyze_race(soup):
+def analyze_race(data):
     # À implémenter : fonction d'analyse de la course
-    # Vous pouvez extraire les informations spécifiques de la page et effectuer l'analyse nécessaire
+    # Vous pouvez extraire les informations spécifiques du dictionnaire Python et effectuer l'analyse nécessaire
     pass
 
+# Exemple d'utilisation du script pour une course spécifique
+date_param = "01012024"
+reunion_param = "R2"
+course_param = "C1"
+
+call_api(date_param, reunion_param, course_param)
