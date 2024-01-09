@@ -1,8 +1,8 @@
-# Exemple d'utilisation du script pour une course spécifique
-from scrapping.scrapping import scrap_pmu_data
+from datetime import datetime
+from scrapping.scrapping import call_api_between_dates
 
-date_param = "01012024"
-reunion_param = "r2"
-course_param = "c1"
+# Example usage for a date range
+start_date_param = datetime(2024, 1, 1)
+end_date_param = datetime(2024, 1, 2)
 
-scrap_pmu_data(date_param, reunion_param, course_param)
+call_api_between_dates(start_date_param, end_date_param)

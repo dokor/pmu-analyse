@@ -109,9 +109,3 @@ def call_api_between_dates(start_date, end_date):
             reunion_number += 1  # Move to the next reunion
 
         current_date += timedelta(days=1)  # Move to the next date
-
-# Example usage for a date range
-start_date_param = datetime(2024, 1, 1)
-end_date_param = datetime(2024, 1, 8)
-
-call_api_between_dates(start_date_param, end_date_param)
