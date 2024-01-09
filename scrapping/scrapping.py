@@ -1,4 +1,7 @@
 import requests
+from datetime import datetime, timedelta
+
+from database.database import save_race_data
 
 def call_api(date, reunion, course):
     base_url = "https://online.turfinfo.api.pmu.fr/rest/client/61/programme/{}/{}/{}?specialisation=INTERNET"
@@ -17,20 +20,98 @@ def call_api(date, reunion, course):
         # Convertir la réponse JSON en un dictionnaire Python
         data = response.json()
 
+        print("Tentative de save de la course", reunion, course, date)
         # Appeler la fonction d'analyse de la course avec les données de l'API
-        analyze_race(data)
+        save_race_data(data)
 
     else:
         print("Échec de la requête API. Code de statut:", response.status_code)
 
-def analyze_race(data):
-    # À implémenter : fonction d'analyse de la course
-    # Vous pouvez extraire les informations spécifiques du dictionnaire Python et effectuer l'analyse nécessaire
-    pass
-
 # Exemple d'utilisation du script pour une course spécifique
-date_param = "01012024"
-reunion_param = "R2"
-course_param = "C1"
+#date_param = "01012024"
+#reunion_param = "R2"
+#course_param = "C1"
+#call_api(date_param, reunion_param, course_param)
 
-call_api(date_param, reunion_param, course_param)
+
+
+def get_race_dates(start_date, end_date):
+    current_date = start_date
+    race_dates = []
+
+    while current_date <= end_date:
+        race_dates.append(current_date.strftime("%d%m%Y"))
+        current_date += timedelta(days=1)
+
+    return race_dates
+
+# def call_api_between_dates(start_date, end_date):
+#     current_date = start_date
+#     while current_date <= end_date:
+#         reunion_number = 1
+#         while True:
+#             course_number = 1
+#             while True:
+#                 base_url = "https://online.turfinfo.api.pmu.fr/rest/client/61/programme/{}/{}/{}?specialisation=INTERNET"
+#                 url = base_url.format(current_date.strftime("%d%m%Y"), f"R{reunion_number}", f"C{course_number}")
+#
+#                 headers = {
+#                     'accept': 'application/json',
+#                     'user-agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36'
+#                     # Add other headers as needed
+#                 }
+#
+#                 response = requests.get(url, headers=headers)
+#
+#                 if response.status_code == 204:
+#                     # No more courses for this reunion or the reunion does not exist
+#                     break
+#                 elif response.status_code == 200:
+#                     # Courses are available for this reunion
+#                     data = response.json()
+#                     save_race_data(data)
+#                 else:
+#                     print(f"Failed API request for date {current_date}, reunion {reunion_number}, course {course_number}. Status code:", response.status_code)
+#                     # Handle other status codes as needed
+#
+#                 course_number += 1  # Move to the next course
+#
+#             reunion_number += 1  # Move to the next reunion
+#
+#         current_date += timedelta(days=1)  # Move to the next date
+
+def call_api_between_dates(start_date, end_date):
+    current_date = start_date
+    while current_date <= end_date:
+        reunion_number = 1
+        while True:
+            base_url = "https://online.turfinfo.api.pmu.fr/rest/client/61/programme/{}/{}?specialisation=INTERNET"
+            url = base_url.format(current_date.strftime("%d%m%Y"), f"R{reunion_number}")
+
+            headers = {
+                'accept': 'application/json',
+                'user-agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36'
+                # Add other headers as needed
+            }
+
+            response = requests.get(url, headers=headers)
+
+            if response.status_code == 204:
+                # No more courses for this reunion or the reunion does not exist
+                break
+            elif response.status_code == 200:
+                # Courses are available for this reunion
+                data = response.json()
+                save_race_data(data)
+            else:
+                print(f"Failed API request for date {current_date}, reunion {reunion_number}. Status code:", response.status_code)
+                # Handle other status codes as needed
+            reunion_number += 1  # Move to the next reunion
+
+        current_date += timedelta(days=1)  # Move to the next date
+
+# Example usage for a date range
+start_date_param = datetime(2024, 1, 1)
+end_date_param = datetime(2024, 1, 8)
+
+call_api_between_dates(start_date_param, end_date_param)
