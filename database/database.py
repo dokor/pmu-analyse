@@ -3,18 +3,7 @@ from sqlalchemy.orm import sessionmaker
 from database.setup_database import engine, Hippodrome, Pays, Reunion
 
 
-def save_race_data(data):
-    print("TRY SAVE")
-    # Créer une session SQLAlchemy
-    Session = sessionmaker(bind=engine)
-    session = Session()
-
-    # Utiliser la session pour ajouter des données à la base de données
-    # TODO : remplacer par l'appel api
-    #with open("../scrapping/scrapping_exemple.json", "r") as f:
-    #    data = json.load(f)
-    reunion_data = data
-
+def save_race_data(reunion_data):
     # Nettoyage des infos inutiles
     reunion_data.pop('parisEvenement', None)
     reunion_data.pop('meteo', None)
@@ -23,30 +12,40 @@ def save_race_data(data):
     reunion_data.pop('cagnottes', None)
     reunion_data['dateReunion'] = datetime.utcfromtimestamp(reunion_data['dateReunion'] / 1000.0)
 
+    pays_data = reunion_data.get('pays', {})
+    save_pays(pays_data)
 
     hippodrome_data = reunion_data.get('hippodrome', {})
-    pays_data = reunion_data.get('pays', {})
+    save_hippodrome(hippodrome_data)
 
-    # Vérifier si les données existent déjà dans la base de données
-    existing_reunion = False
-    existing_hippodrome = session.query(Hippodrome).filter_by(code=hippodrome_data.get('code')).first()
+    save_reunions(reunion_data)
+
+def save_pays(pays_data):
+    Session = sessionmaker(bind=engine)
+    session = Session()
     existing_pays = session.query(Pays).filter_by(code=pays_data.get('code')).first()
-
-    # Ajouter les données uniquement si elles n'existent pas déjà
     if not existing_pays:
         pays_obj = Pays(**pays_data)
         session.add(pays_obj)
+    session.commit()
 
+def save_hippodrome(hippodrome_data):
+    Session = sessionmaker(bind=engine)
+    session = Session()
+    existing_hippodrome = session.query(Hippodrome).filter_by(code=hippodrome_data.get('code')).first()
     if not existing_hippodrome:
         hippodrome_obj = Hippodrome(**hippodrome_data)
         session.add(hippodrome_obj)
+    session.commit()
 
+def save_reunions(reunion_data):
+    Session = sessionmaker(bind=engine)
+    session = Session()
+    existing_reunion = False
     if not existing_reunion:
         reunion_data.pop('hippodrome', None)
         reunion_data.pop('pays', None)
-        reunion_data.pop('courses', None) # a adapter
-        reunion_obj = Reunion(**reunion_data, hippodrome_code=hippodrome_data.get('code'), pays_code=pays_data.get('code'))
+        reunion_data.pop('courses', None)
+        reunion_obj = Reunion(**reunion_data, hippodrome_code=reunion_data.get('hippodrome', {}).get('code'), pays_code=reunion_data.get('pays', {}).get('code'))
         session.add(reunion_obj)
-
-    # Committer les changements à la base de données
     session.commit()
