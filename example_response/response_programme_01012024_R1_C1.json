@@ -1,1 +1,256 @@
-{"cached":false,"arriveeDefinitive":true,"departImminent":false,"timezoneOffset":3600000,"numReunion":1,"numExterneReunion":1,"numOrdre":1,"numExterne":1,"heureDepart":1704111900000,"libelle":"PRIX DE GRETZ","libelleCourt":"DE GRETZ","montantPrix":33000,"parcours":"GP","distance":2200,"distanceUnit":"METRE","corde":"CORDE_GAUCHE","discipline":"MONTE","specialite":"TROT_MONTE","categorieParticularite":"INCONNU","conditionSexe":"MALES_ET_HONGRES","nombreDeclaresPartants":13,"grandPrixNationalTrot":false,"numSocieteMere":750002,"pariMultiCourses":false,"pariSpecial":false,"montantTotalOffert":33000,"montantOffert1er":14850,"montantOffert2eme":8250,"montantOffert3eme":4620,"montantOffert4eme":2640,"montantOffert5eme":1650,"conditions":"PRIX DE GRETZ Course  2 Course D 33.000. - Monté, mâles. - 2.200 mètres (G. et P. P.) 14.850, 8.250, 4.620, 2.640, 1.650, 660, 330. Pour poulains entiers et hongres de 3 ans (L), n'ayant pas gagné 10.000. Avantage de poids (voir Conditions Générales).","numCourseDedoublee":0,"paris":[{"nbChevauxReglementaire":1,"spotAutorise":false,"complement":false,"codePari":"E_SIMPLE_GAGNANT","ordre":false,"combine":true,"typePari":"E_SIMPLE_GAGNANT","miseBase":100,"enVente":false,"audience":"NATIONAL","reportable":true,"infosJackpot":{"miseBase":150,"tauxContribution":{"numerateur":1,"denominateur":3}}},{"nbChevauxReglementaire":1,"spotAutorise":false,"complement":false,"codePari":"E_SIMPLE_PLACE","ordre":false,"combine":true,"typePari":"E_SIMPLE_PLACE","miseBase":100,"enVente":false,"audience":"NATIONAL","reportable":true,"infosJackpot":{"miseBase":150,"tauxContribution":{"numerateur":1,"denominateur":3}}},{"nbChevauxReglementaire":1,"spotAutorise":false,"complement":false,"codePari":"E_REPORT_PLUS","ordre":false,"combine":false,"typePari":"E_REPORT_PLUS","enVente":false,"reportable":false},{"nbChevauxReglementaire":2,"spotAutorise":true,"complement":true,"codePari":"E_COUPLE_GAGNANT","ordre":false,"combine":true,"typePari":"E_COUPLE_GAGNANT","miseBase":100,"enVente":false,"audience":"NATIONAL","reportable":true},{"nbChevauxReglementaire":2,"spotAutorise":true,"complement":true,"codePari":"E_COUPLE_PLACE","ordre":false,"combine":true,"typePari":"E_COUPLE_PLACE","miseBase":100,"enVente":false,"audience":"NATIONAL","reportable":true},{"nbChevauxReglementaire":3,"spotAutorise":true,"complement":true,"codePari":"E_TRIO","ordre":false,"combine":true,"typePari":"E_TRIO","miseBase":100,"enVente":false,"audience":"NATIONAL","reportable":false},{"nbChevauxReglementaire":2,"spotAutorise":true,"valeursFlexiAutorisees":[50],"complement":true,"codePari":"E_DEUX_SUR_QUATRE","ordre":false,"combine":true,"typePari":"E_DEUX_SUR_QUATRE","miseBase":300,"enVente":false,"audience":"NATIONAL","reportable":true,"infosJackpot":{"miseBase":400,"tauxContribution":{"numerateur":1,"denominateur":4}}},{"nbChevauxReglementaire":4,"spotAutorise":true,"valeursRisqueAutorisees":[4,5,6],"valeursFlexiAutorisees":[50],"complement":false,"codePari":"E_MINI_MULTI","ordre":false,"combine":true,"typePari":"E_MINI_MULTI","miseBase":300,"enVente":false,"audience":"NATIONAL","reportable":false}],"statut":"ARRIVEE_DEFINITIVE_COMPLETE","categorieStatut":"ARRIVEE","dureeCourse":172140,"participants":[],"ecuries":[],"photosArrivee":[{"heightSize":217,"widthSize":450,"url":"https://www.pmu.fr/back-assets/hippique/infocentre/photos/arrivee/01012024R1C1/photo_arrivee_450px_width_size.jpg","originalSize":false},{"heightSize":96,"widthSize":200,"url":"https://www.pmu.fr/back-assets/hippique/infocentre/photos/arrivee/01012024R1C1/photo_arrivee_200px_width_size.jpg","originalSize":false},{"heightSize":230,"widthSize":478,"url":"https://www.pmu.fr/back-assets/hippique/infocentre/photos/arrivee/01012024R1C1/photo_arrivee_original_size.jpg","originalSize":true}],"commentaireApresCourse":{"texte":"Fautif au départ, LUKAS D'OLIVERIE (10) se rapproche progressivement des premiers, avant de se montrer souverain dans la ligne droite. Bon finisseur, LOTUS ZEN100  1727    0  1727    0     0   7922      0 --:--:-- --:--:-- --:--:--  7958sein du peloton, LEANDRO DE MER (7) ajuste l'animateur LOOP JANEIRO (4), pour l'obtention de la quatrième place.","source":"GENY"},"incidents":[{"type":"NON_PARTANT","numeroParticipants":[3]},{"type":"DISQUALIFIE_POUR_ALLURE_IRREGULIERE","numeroParticipants":[1,2,5,8,12,13]}],"isArriveeDefinitive":true,"isDepartImminent":false,"isDepartAJPlusUn":false,"cagnottes":[],"pronosticsExpires":false,"replayDisponible":true,"hippodrome":{"codeHippodrome":"VIN","libelleCourt":"VINCENNES","libelleLong":"HIPPODROME DE PARIS-VINCENNES"},"epcPourTousParis":true,"courseTrackee":false,"courseExclusiveInternet":false,"formuleChampLibreIndisponible":false,"hasEParis":true,"ordreArrivee":[[10],[6],[9],[7],[4],[11]]}
+{
+  "cached": false,
+  "arriveeDefinitive": true,
+  "departImminent": false,
+  "timezoneOffset": 3600000,
+  "numReunion": 1,
+  "numExterneReunion": 1,
+  "numOrdre": 1,
+  "numExterne": 1,
+  "heureDepart": 1704111900000,
+  "libelle": "PRIX DE GRETZ",
+  "libelleCourt": "DE GRETZ",
+  "montantPrix": 33000,
+  "parcours": "GP",
+  "distance": 2200,
+  "distanceUnit": "METRE",
+  "corde": "CORDE_GAUCHE",
+  "discipline": "MONTE",
+  "specialite": "TROT_MONTE",
+  "categorieParticularite": "INCONNU",
+  "conditionSexe": "MALES_ET_HONGRES",
+  "nombreDeclaresPartants": 13,
+  "grandPrixNationalTrot": false,
+  "numSocieteMere": 750002,
+  "pariMultiCourses": false,
+  "pariSpecial": false,
+  "montantTotalOffert": 33000,
+  "montantOffert1er": 14850,
+  "montantOffert2eme": 8250,
+  "montantOffert3eme": 4620,
+  "montantOffert4eme": 2640,
+  "montantOffert5eme": 1650,
+  "conditions": "PRIX DE GRETZ Course  2 Course D 33.000. - Monté, mâles. - 2.200 mètres (G. et P. P.) 14.850, 8.250, 4.620, 2.640, 1.650, 660, 330. Pour poulains entiers et hongres de 3 ans (L),n'ayant pas gagné 10.000. Avantage de poids (voir Conditions Générales).",
+  "numCourseDedoublee": 0,
+  "paris": [
+    {
+      "nbChevauxReglementaire": 1,
+      "spotAutorise": false,
+      "complement": false,
+      "codePari": "E_SIMPLE_GAGNANT",
+      "ordre": false,
+      "combine": true,
+      "typePari": "E_SIMPLE_GAGNANT",
+      "miseBase": 100,
+      "enVente": false,
+      "audience": "NATIONAL",
+      "reportable": true,
+      "infosJackpot": {
+        "miseBase": 150,
+        "tauxContribution": {
+          "numerateur": 1,
+          "denominateur": 3
+        }
+      }
+    },
+    {
+      "nbChevauxReglementaire": 1,
+      "spotAutorise": false,
+      "complement": false,
+      "codePari": "E_SIMPLE_PLACE",
+      "ordre": false,
+      "combine": true,
+      "typePari": "E_SIMPLE_PLACE",
+      "miseBase": 100,
+      "enVente": false,
+      "audience": "NATIONAL",
+      "reportable": true,
+      "infosJackpot": {
+        "miseBase": 150,
+        "tauxContribution": {
+          "numerateur": 1,
+          "denominateur": 3
+        }
+      }
+    },
+    {
+      "nbChevauxReglementaire": 1,
+      "spotAutorise": false,
+      "complement": false,
+      "codePari": "E_REPORT_PLUS",
+      "ordre": false,
+      "combine": false,
+      "typePari": "E_REPORT_PLUS",
+      "enVente": false,
+      "reportable": false
+    },
+    {
+      "nbChevauxReglementaire": 2,
+      "spotAutorise": true,
+      "complement": true,
+      "codePari": "E_COUPLE_GAGNANT",
+      "ordre": false,
+      "combine": true,
+      "typePari": "E_COUPLE_GAGNANT",
+      "miseBase": 100,
+      "enVente": false,
+      "audience": "NATIONAL",
+      "reportable": true
+    },
+    {
+      "nbChevauxReglementaire": 2,
+      "spotAutorise": true,
+      "complement": true,
+      "codePari": "E_COUPLE_PLACE",
+      "ordre": false,
+      "combine": true,
+      "typePari": "E_COUPLE_PLACE",
+      "miseBase": 100,
+      "enVente": false,
+      "audience": "NATIONAL",
+      "reportable": true
+    },
+    {
+      "nbChevauxReglementaire": 3,
+      "spotAutorise": true,
+      "complement": true,
+      "codePari": "E_TRIO",
+      "ordre": false,
+      "combine": true,
+      "typePari": "E_TRIO",
+      "miseBase": 100,
+      "enVente": false,
+      "audience": "NATIONAL",
+      "reportable": false
+    },
+    {
+      "nbChevauxReglementaire": 2,
+      "spotAutorise": true,
+      "valeursFlexiAutorisees": [
+        50
+      ],
+      "complement": true,
+      "codePari": "E_DEUX_SUR_QUATRE",
+      "ordre": false,
+      "combine": true,
+      "typePari": "E_DEUX_SUR_QUATRE",
+      "miseBase": 300,
+      "enVente": false,
+      "audience": "NATIONAL",
+      "reportable": true,
+      "infosJackpot": {
+        "miseBase": 400,
+        "tauxContribution": {
+          "numerateur": 1,
+          "denominateur": 4
+        }
+      }
+    },
+    {
+      "nbChevauxReglementaire": 4,
+      "spotAutorise": true,
+      "valeursRisqueAutorisees": [
+        4,
+        5,
+        6
+      ],
+      "valeursFlexiAutorisees": [
+        50
+      ],
+      "complement": false,
+      "codePari": "E_MINI_MULTI",
+      "ordre": false,
+      "combine": true,
+      "typePari": "E_MINI_MULTI",
+      "miseBase": 300,
+      "enVente": false,
+      "audience": "NATIONAL",
+      "reportable": false
+    }
+  ],
+  "statut": "ARRIVEE_DEFINITIVE_COMPLETE",
+  "categorieStatut": "ARRIVEE",
+  "dureeCourse": 172140,
+  "participants": [],
+  "ecuries": [],
+  "photosArrivee": [
+    {
+      "heightSize": 217,
+      "widthSize": 450,
+      "url": "https://www.pmu.fr/back-assets/hippique/infocentre/photos/arrivee/01012024R1C1/photo_arrivee_450px_width_size.jpg",
+      "originalSize": false
+    },
+    {
+      "heightSize": 96,
+      "widthSize": 200,
+      "url": "https://www.pmu.fr/back-assets/hippique/infocentre/photos/arrivee/01012024R1C1/photo_arrivee_200px_width_size.jpg",
+      "originalSize": false
+    },
+    {
+      "heightSize": 230,
+      "widthSize": 478,
+      "url": "https://www.pmu.fr/back-assets/hippique/infocentre/photos/arrivee/01012024R1C1/photo_arrivee_original_size.jpg",
+      "originalSize": true
+    }
+  ],
+  "commentaireApresCourse": {
+    "texte": "Fautif au départ, LUKAS D'OLIVERIE (10) se rapproche progressivement des premiers, avant de se montrer souverain dans la ligne droite. Bon finisseur, LOTUS ZEN100  1727    0  1727    0     0   7922      0 --:--:-- --:--:-- --:--:--  7958sein du peloton,LEANDRO DE MER (7) ajuste l'animateur LOOP JANEIRO (4),pour l'obtention de la quatrième place.",
+    "source": "GENY"
+  },
+  "incidents": [
+    {
+      "type": "NON_PARTANT",
+      "numeroParticipants": [
+        3
+      ]
+    },
+    {
+      "type": "DISQUALIFIE_POUR_ALLURE_IRREGULIERE",
+      "numeroParticipants": [
+        1,
+        2,
+        5,
+        8,
+        12,
+        13
+      ]
+    }
+  ],
+  "isArriveeDefinitive": true,
+  "isDepartImminent": false,
+  "isDepartAJPlusUn": false,
+  "cagnottes": [],
+  "pronosticsExpires": false,
+  "replayDisponible": true,
+  "hippodrome": {
+    "codeHippodrome": "VIN",
+    "libelleCourt": "VINCENNES",
+    "libelleLong": "HIPPODROME DE PARIS-VINCENNES"
+  },
+  "epcPourTousParis": true,
+  "courseTrackee": false,
+  "courseExclusiveInternet": false,
+  "formuleChampLibreIndisponible": false,
+  "hasEParis": true,
+  "ordreArrivee": [
+    [
+      10
+    ],
+    [
+      6
+    ],
+    [
+      9
+    ],
+    [
+      7
+    ],
+    [
+      4
+    ],
+    [
+      11
+    ]
+  ]
+}
+
