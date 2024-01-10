@@ -1,3 +1,4 @@
+import logging
 from datetime import datetime
 from sqlalchemy.orm import sessionmaker
 from database.setup_database import engine, Hippodrome, Pays, Reunion
@@ -27,6 +28,7 @@ def save_pays(pays_data):
     if not existing_pays:
         pays_obj = Pays(**pays_data)
         session.add(pays_obj)
+        logging.info("Saving pays data")
     session.commit()
 
 def save_hippodrome(hippodrome_data):
@@ -36,6 +38,7 @@ def save_hippodrome(hippodrome_data):
     if not existing_hippodrome:
         hippodrome_obj = Hippodrome(**hippodrome_data)
         session.add(hippodrome_obj)
+        logging.info("Saving hippodrome data")
     session.commit()
 
 def save_reunions(reunion_data):
@@ -48,4 +51,5 @@ def save_reunions(reunion_data):
         reunion_data.pop('courses', None)
         reunion_obj = Reunion(**reunion_data, hippodrome_code=reunion_data.get('hippodrome', {}).get('code'), pays_code=reunion_data.get('pays', {}).get('code'))
         session.add(reunion_obj)
+        logging.info("Saving reunion data")
     session.commit()
