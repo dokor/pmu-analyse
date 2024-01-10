@@ -1,5 +1,7 @@
+import logging
+
 import requests
-from datetime import datetime, timedelta
+from datetime import timedelta
 
 from database.database import save_race_data
 
@@ -10,22 +12,21 @@ def call_api(date, reunion, course):
     headers = {
         'accept': 'application/json',
         'user-agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36'
-        # Ajoutez d'autres en-têtes au besoin
+        # Add other headers as needed
     }
 
-    # Envoyer une requête GET à l'URL de l'API
+    # Send a GET request to the API URL
     response = requests.get(url, headers=headers)
 
     if response.status_code == 200:
-        # Convertir la réponse JSON en un dictionnaire Python
+        # Convert the JSON response to a Python dictionary
         data = response.json()
 
-        print("Tentative de save de la course", reunion, course, date)
-        # Appeler la fonction d'analyse de la course avec les données de l'API
-        #save_race_data(data)
-
+        # Call the function to save race data
+        logging.info(f"Attempting to save race data for {reunion}, {course}, {date}")
+        save_race_data(data)
     else:
-        print("Échec de la requête API. Code de statut:", response.status_code)
+        logging.error(f"API request failed. Status code: {response.status_code}, Date: {date}, Reunion: {reunion}, Course: {course}")
 
 def get_race_dates(start_date, end_date):
     current_date = start_date
@@ -55,13 +56,14 @@ def call_api_between_dates(start_date, end_date):
 
             if response.status_code == 204:
                 # No more courses for this reunion or the reunion does not exist
+                logging.info(f"No more courses for reunion {reunion_number} on {current_date}")
                 break
             elif response.status_code == 200:
                 # Courses are available for this reunion
                 data = response.json()
                 save_race_data(data)
             else:
-                print(f"Failed API request for date {current_date}, reunion {reunion_number}. Status code:", response.status_code)
+                logging.error(f"API request failed. Status code: {response.status_code}, Date: {current_date}, Reunion: {reunion_number}")
                 # Handle other status codes as needed
             reunion_number += 1  # Move to the next reunion
 
