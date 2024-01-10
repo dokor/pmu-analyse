@@ -34,11 +34,12 @@ def call_api_between_dates(start_date, end_date):
 
             if response.status_code == 204:
                 # No more courses for this reunion or the reunion does not exist
-                logging.info(f"No more reunion [{reunion_number}] on {current_date}")
+                logging.info(f"No more reunion [{reunion_number}] on {current_date} : 204")
                 break
             elif response.status_code == 200:
                 # Courses are available for this reunion
                 data = response.json()
+                logging.debug(f"Response 200 for reunions [{reunion_number}] on {current_date}")
                 save_race_data(data)
             else:
                 logging.error(f"API request failed. Status code: {response.status_code}, Date: {current_date}, Reunion: {reunion_number}")
