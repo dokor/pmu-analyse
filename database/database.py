@@ -44,7 +44,11 @@ def save_hippodrome(hippodrome_data):
 def save_reunions(reunion_data):
     Session = sessionmaker(bind=engine)
     session = Session()
-    existing_reunion = False
+    existing_reunion = (session.query(Reunion)
+                        .filter_by(
+        dateReunion=reunion_data.get('dateReunion'),
+        numOfficiel=reunion_data.get('numOfficiel')
+    ).first())
     if not existing_reunion:
         reunion_data.pop('hippodrome', None)
         reunion_data.pop('pays', None)
