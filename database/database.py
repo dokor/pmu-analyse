@@ -1,25 +1,9 @@
 import logging
 from datetime import datetime
+
 from sqlalchemy.orm import sessionmaker
-from database.setup_database import engine, Hippodrome, Pays, Reunion
+from database.setup_database import engine, Hippodrome, Pays, Reunion, Course
 
-
-def save_race_data(reunion_data):
-    # Nettoyage des infos inutiles
-    reunion_data.pop('parisEvenement', None)
-    reunion_data.pop('meteo', None)
-    reunion_data.pop('offresInternet', None)
-    reunion_data.pop('regionHippique', None)
-    reunion_data.pop('cagnottes', None)
-    reunion_data['dateReunion'] = datetime.utcfromtimestamp(reunion_data['dateReunion'] / 1000.0)
-
-    pays_data = reunion_data.get('pays', {})
-    save_pays(pays_data)
-
-    hippodrome_data = reunion_data.get('hippodrome', {})
-    save_hippodrome(hippodrome_data)
-
-    save_reunions(reunion_data)
 
 def save_pays(pays_data):
     Session = sessionmaker(bind=engine)
@@ -57,3 +41,27 @@ def save_reunions(reunion_data):
         session.add(reunion_obj)
         logging.info("Saving reunion data")
     session.commit()
+
+def save_courses(courses_data):
+    Session = sessionmaker(bind=engine)
+    session = Session()
+
+    for course_data in courses_data:
+        course_data['heureDepart'] = datetime.utcfromtimestamp(course_data['heureDepart'] / 1000.0)
+        existing_course = (session.query(Course).filter_by(
+            heureDepart=course_data.get('heureDepart'),
+            numReunion=course_data.get('numReunion'),
+            numOrdre=course_data.get('numOrdre')
+        ).first())
+        if not existing_course:
+            hipodrome_code = course_data.get('hippodrome', {}).get('codeHippodrome')
+            # Définissez une liste des noms d'attributs valides de la classe Course
+            valid_attributes = [attr.name for attr in Course.__table__.columns]
+
+            # Créez un nouveau dictionnaire avec seulement les attributs valides
+            filtered_course_data = {key: value for key, value in course_data.items() if key in valid_attributes}
+
+            course_obj = Course(**filtered_course_data, hippodrome_code=hipodrome_code)
+            session.add(course_obj)
+            logging.info("Saving Course data")
+            session.commit()

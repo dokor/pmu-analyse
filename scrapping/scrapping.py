@@ -1,9 +1,8 @@
 import logging
-
 import requests
 from datetime import timedelta
+from data_traitement.traitement import save_race_data
 
-from database.database import save_race_data
 
 def get_race_dates(start_date, end_date):
     current_date = start_date
