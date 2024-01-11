@@ -3,7 +3,6 @@ import requests
 from datetime import timedelta
 from data_traitement.traitement import save_race_data
 
-
 def get_race_dates(start_date, end_date):
     current_date = start_date
     race_dates = []
@@ -25,14 +24,13 @@ def call_api_between_dates(start_date, end_date):
             headers = {
                 'accept': 'application/json',
                 'user-agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36'
-                # Add other headers as needed
             }
 
             logging.debug(f"Attempting to call API for {current_date}, {reunion_number}""")
             response = requests.get(url, headers=headers)
 
             if response.status_code == 204:
-                # No more courses for this reunion or the reunion does not exist
+                # The reunion does not exist
                 logging.info(f"No more reunion [{reunion_number}] on {current_date} : 204")
                 break
             elif response.status_code == 200:
@@ -42,7 +40,7 @@ def call_api_between_dates(start_date, end_date):
                 save_race_data(data)
             else:
                 logging.error(f"API request failed. Status code: {response.status_code}, Date: {current_date}, Reunion: {reunion_number}")
-                # Handle other status codes as needed
+
             reunion_number += 1  # Move to the next reunion
 
         current_date += timedelta(days=1)  # Move to the next date

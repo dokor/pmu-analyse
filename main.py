@@ -1,6 +1,5 @@
 from datetime import datetime
 from logging.config import fileConfig
-
 from scrapping.scrapping import call_api_between_dates
 
 fileConfig('logger/logging_config.ini')
