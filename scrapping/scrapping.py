@@ -3,6 +3,7 @@ import requests
 from datetime import timedelta
 from data_traitement.traitement import save_race_data
 
+# Calcul les dates intermédiaires entre deux dates données
 def get_race_dates(start_date, end_date):
     current_date = start_date
     race_dates = []
@@ -13,6 +14,7 @@ def get_race_dates(start_date, end_date):
 
     return race_dates
 
+# Apelle l'api pmu afin de récupérer l'ensemble des données des courses, réunions, hippodrome, participants
 def call_api_between_dates(start_date, end_date):
     current_date = start_date
     while current_date <= end_date:
@@ -38,9 +40,14 @@ def call_api_between_dates(start_date, end_date):
                 data = response.json()
                 logging.debug(f"Response 200 for reunions [{reunion_number}] on {current_date}")
                 save_race_data(data)
+                scrap_participants(current_date, reunion_number, data)
             else:
                 logging.error(f"API request failed. Status code: {response.status_code}, Date: {current_date}, Reunion: {reunion_number}")
 
             reunion_number += 1  # Move to the next reunion
 
         current_date += timedelta(days=1)  # Move to the next date
+
+
+def scrap_participants(current_date, reunion_number, data):
+    pass
